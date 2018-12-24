@@ -3,35 +3,35 @@
 #### 介绍
 实现​Java写日志到Flume，Flume最终把日志写到MongoDB
 
-#### 软件架构
-软件架构说明
-
-
 #### 安装教程
 
-1. xxxx
-2. xxxx
-3. xxxx
+1. 前往Flume官方地址下载Flume1.8.0
+2. 前往MongoDB下载4.0版本MongoDB
+3. 线上使用需在flume/lib下添加一下几个jar包
+- mongodb-driver-3.8.2.jar
+- mongodb-driver-core-3.8.2.jar
+- bson-3.8.2.jar
 
 #### 使用说明
 
-1. xxxx
-2. xxxx
-3. xxxx
+1. 下载本项目后打JAR包放入flume/lib下
+2. 在Flume的conf目录配置MongoDBFlume.conf
+3. 运行：bin/flume-ng agent --conf conf --conf-file conf/MongoDBFlume.conf --name a1 -Dflume.root.logger=info,console
+4. 本地测试：telnet localhost 44444
+
+
+#### 未实现功能
+1. 插入指定的集合，无需配置 根据传入的数据（JSON）进行动态插入指定集合（collection）
+2. MongoDB连接池
 
 #### 参与贡献
 
 1. Fork 本仓库
-2. 新建 Feat_xxx 分支
+2. 新建分支
 3. 提交代码
 4. 新建 Pull Request
 
+#### 联系作者
+1. 红警专家 [blog.gzczy.top](https://blog.gzczy.top)
+2. 关注微信公众号：JAVA大咖说
 
-#### 码云特技
-
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
