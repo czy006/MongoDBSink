@@ -1,5 +1,8 @@
 package com.gzczy.MongodbSink;
 
+/**
+ * 配置类
+ */
 public class MongoSinkConstants {
 
 	/**
@@ -14,7 +17,7 @@ public class MongoSinkConstants {
 	public static final String DATABASE = "database";
 
 	/**
-	 * Collection name.
+	 * Collection name.Just Use MongoSinkConstants Can use
 	 */
 	public static final String COLLECTION = "collection";
 
@@ -39,6 +42,14 @@ public class MongoSinkConstants {
 	 */
 	public static final int DEFAULT_BATCH_SIZE = 100;
 
+	/**
+	 * authentication_enabled
+	 */
 	public static final String AUTHENTICALTION = "authentication_enabled";
+
+	/**
+	 * sever-ID NAME
+	 */
+	public static final String ServerName = "gslog_";
 
 }
