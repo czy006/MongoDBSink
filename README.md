@@ -15,14 +15,14 @@
 #### 使用说明
 
 1. 下载本项目后打JAR包放入flume/lib下
-2. 在Flume的conf目录配置MongoDBFlume.conf
+2. 在Flume的conf目录配置MongoDBFlume.conf （仓库有案例配置文件）
 3. 运行：bin/flume-ng agent --conf conf --conf-file conf/MongoDBFlume.conf --name a1 -Dflume.root.logger=info,console
 4. 本地测试：telnet localhost 44444
+5. 在telnet插入JSON数据测试
 
-
-#### 未实现功能
-1. 插入指定的集合，无需配置 根据传入的数据（JSON）进行动态插入指定集合（collection）
-2. MongoDB连接池
+#### 使用注意
+- 如果没有密码和用户名 就不需要user password authentication_enabled这3个参数
+- 如果有密码，请设置authentication_enabled = True
 
 #### 参与贡献
 
