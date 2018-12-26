@@ -38,7 +38,7 @@ public class MongoSinkByServer extends AbstractSink implements Configurable {
 
 	private int batchSize = DEFAULT_BATCH_SIZE;
 
-	private String serverName;
+	private String serverName=ServerName;
 
 	private boolean DEFAULT_AUTHENTICATION_ENABLED = false;
 
@@ -61,6 +61,8 @@ public class MongoSinkByServer extends AbstractSink implements Configurable {
 				String cuTime = getCurrentTime();
 				String jsonEvent = new String(event.getBody(), StandardCharsets.UTF_8);
 				Document sentEvent = Document.parse(jsonEvent).append("_time", cuTime);
+				//TODO 发送到Kafka 不同的主题中 定义主题
+				//event.getHeaders().put("topic",sentEvent.getString("_topic"));
 				documents.add(sentEvent);
 			}
 			if (count <= 0) {
@@ -74,14 +76,9 @@ public class MongoSinkByServer extends AbstractSink implements Configurable {
 					sinkCounter.incrementBatchCompleteCount();
 				}
 				sinkCounter.addToEventDrainAttemptCount(count);
-				documents.forEach(obj->{
-					//if (obj.getInteger("status",0)==1){
-					//	client.getDatabase(serverName+obj.getString("_server")).
-					//			getCollection(obj.getString("colName")).replaceOne(Filters.eq("name", ""),obj);
-					//}else {
-						client.getDatabase(serverName+obj.getString("_server")).
-								getCollection(obj.getString("_topic")).insertOne(obj);
-					//}
+				documents.forEach(obj -> {
+					client.getDatabase(serverName + obj.getString("_server")).
+							getCollection(obj.getString("_topic")).insertOne(obj);
 				});
 			}
 			transaction.commit();
@@ -148,7 +145,6 @@ public class MongoSinkByServer extends AbstractSink implements Configurable {
 		if (authentication_enabled) {
 			credential = getCredential(context);
 		}
-		serverName = context.getString(ServerName);
 		batchSize = context.getInteger(BATCH_SIZE, DEFAULT_BATCH_SIZE);
 		if (sinkCounter == null) {
 			sinkCounter = new SinkCounter(getName());
