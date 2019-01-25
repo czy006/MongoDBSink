@@ -1,7 +1,7 @@
 package com.gzczy.MongodbSink;
 
 /**
- * 配置类
+ * The config
  */
 public class MongoSinkConstants {
 
@@ -46,10 +46,5 @@ public class MongoSinkConstants {
 	 * authentication_enabled
 	 */
 	public static final String AUTHENTICALTION = "authentication_enabled";
-
-	/**
-	 * sever-ID NAME
-	 */
-	public static final String ServerName = "gslog_";
 
 }

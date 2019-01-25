@@ -3,14 +3,18 @@
 #### 介绍
 实现​Java写日志到Flume，Flume最终把日志写到MongoDB
 
+#### 更新说明
+1.依赖更新至官方
+2.加入后续更多案例
+
 #### 安装教程
 
-1. 前往Flume官方地址下载Flume1.8.0
-2. 前往MongoDB下载4.0版本MongoDB
+1. 前往Flume官方地址下载Flume1.9.0
+2. 前往MongoDB下载4.0以上版本MongoDB（其他版本没有测试）
 3. 线上使用需在flume/lib下添加一下几个jar包
-- mongodb-driver-3.8.2.jar
-- mongodb-driver-core-3.8.2.jar
-- bson-3.8.2.jar
+- mongodb-driver-3.9.1.jar
+- mongodb-driver-core-3.9.1.jar
+- bson-3.9.1.jar
 
 #### 使用说明
 

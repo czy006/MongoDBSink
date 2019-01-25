@@ -10,10 +10,8 @@ import static com.gzczy.MongodbSink.MongoSinkConstants.USER;
 import static com.gzczy.MongodbSink.MongoSinkConstants.AUTHENTICALTION;
 
 import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -69,10 +67,8 @@ public class MongoSinkSelf extends AbstractSink implements Configurable {
 				if (event == null) {
 					break;
 				}
-				String cuTime = getCurrentTime();
 				String jsonEvent = new String(event.getBody(), StandardCharsets.UTF_8);
-				//TODO 根据不同的JSON 指定severId 插入不同的数据库
-				Document sentEvent = Document.parse(jsonEvent).append("Time", cuTime);
+				Document sentEvent = Document.parse(jsonEvent);
 				documents.add(sentEvent);
 			}
 			if (count <= 0) {
@@ -181,13 +177,6 @@ public class MongoSinkSelf extends AbstractSink implements Configurable {
 		}
 
 		return seeds;
-	}
-
-	private String getCurrentTime() {
-		Date dt = new Date();
-		SimpleDateFormat matter1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String CurrentTime = matter1.format(dt);
-		return CurrentTime;
 	}
 
 	private MongoCredential getCredential(Context context) {
